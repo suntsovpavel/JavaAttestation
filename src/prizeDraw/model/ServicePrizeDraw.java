@@ -22,7 +22,7 @@ public class ServicePrizeDraw {
 
     public ServicePrizeDraw(SaveTo saver, LoadFrom loader){
 
-        this.prizeDraw = new PrizeDraw(new Group<Prize>(), new ReportablePrizeDraw());
+        this.prizeDraw = new PrizeDraw(new Group<Prize>());
         this.saver = saver;
         this.loader = loader;
         this.informerHuman = new ReportablePrize();

@@ -1,10 +1,6 @@
 package prizeDraw.model.prize;
-
 import prizeDraw.model.Reportable;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ReportablePrize implements Reportable<Prize>, Serializable {
 

@@ -2,7 +2,6 @@ package prizeDraw.view;
 
 import prizeDraw.presenter.Presenter;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ConsoleUI implements View{
@@ -81,7 +80,7 @@ public class ConsoleUI implements View{
     }
 
     public boolean addPrize(){
-        System.out.println("Введите имя: ");
+        System.out.println("Введите наименование игрушки: ");
         String name = scanner.nextLine();
 
         int amount = 0, weight=0;

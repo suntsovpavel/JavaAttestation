@@ -9,11 +9,9 @@ import java.util.*;
 public class PrizeDraw<T extends ItemPrizeDraw> implements Serializable {
     private Collectable<T> items;  //список игрушек, участвующих в розыгрыше
     private Deque<String> deque;     //очередь имен разыгранных игрушек, ожидающих выдачи
-    private Reportable<PrizeDraw> reportable;
     private String errorMessage; // для метода draw, поскольку он возвращает объект T
-    public PrizeDraw(Collectable<T> items, Reportable<PrizeDraw> reportable){
+    public PrizeDraw(Collectable<T> items){
         this.items = items;
-        this.reportable = reportable;
         this.deque = new ArrayDeque<>();
         this.errorMessage=null;
     }
@@ -69,12 +67,12 @@ public class PrizeDraw<T extends ItemPrizeDraw> implements Serializable {
         Random rand = new Random();
         int value = rand.nextInt(sumWeight);
 
-        //3. Повторно пробегаемся по списку items и, если value не превышает текущую сумму,
-        // считаем, что текущий объект t является разыгранной игрушкой
+        //3. Повторно пробегаемся по списку items
+        //Рандомная игрушка - та, для которой будет достигнуто  value < sumWeight
         sumWeight=0;
         for (T t : items) {
             sumWeight += t.getWeight();
-            if(value <= sumWeight){
+            if(value < sumWeight){
                 deque.add(t.getName());   //Добавляем объект в очередь выдачи
                 t.decreaseAmountByOne();    //Уменьшаем количество на единицу
                 return t;
