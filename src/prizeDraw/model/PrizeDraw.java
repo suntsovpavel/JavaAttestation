@@ -11,8 +11,8 @@ public class PrizeDraw<T extends ItemPrizeDraw> implements Serializable {
     private Deque<String> deque;     //очередь имен разыгранных игрушек, ожидающих выдачи
     private Reportable<PrizeDraw> reportable;
     private String errorMessage; // для метода draw, поскольку он возвращает объект T
-    public PrizeDraw(Reportable<PrizeDraw> reportable){
-        this.items = new Group<>();
+    public PrizeDraw(Collectable<T> items, Reportable<PrizeDraw> reportable){
+        this.items = items;
         this.reportable = reportable;
         this.deque = new ArrayDeque<>();
         this.errorMessage=null;

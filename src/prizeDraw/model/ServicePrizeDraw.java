@@ -1,5 +1,6 @@
 package prizeDraw.model;
 
+import prizeDraw.model.group.Group;
 import prizeDraw.model.prize.Prize;
 import prizeDraw.model.prize.ReportablePrize;
 import saveload.LoadFrom;
@@ -20,7 +21,8 @@ public class ServicePrizeDraw {
     private String pathFilePrizes = "prizes.txt";
 
     public ServicePrizeDraw(SaveTo saver, LoadFrom loader){
-        this.prizeDraw = new PrizeDraw(new ReportablePrizeDraw());
+
+        this.prizeDraw = new PrizeDraw(new Group<Prize>(), new ReportablePrizeDraw());
         this.saver = saver;
         this.loader = loader;
         this.informerHuman = new ReportablePrize();
