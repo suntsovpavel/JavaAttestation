@@ -10,7 +10,6 @@ import java.util.List;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
 
 public class ServicePrizeDraw {
     private PrizeDraw<Prize> prizeDraw;
@@ -22,7 +21,7 @@ public class ServicePrizeDraw {
 
     public ServicePrizeDraw(SaveTo saver, LoadFrom loader){
 
-        this.prizeDraw = new PrizeDraw(new Group<Prize>());
+        this.prizeDraw = new PrizeDraw<Prize>(new Group<Prize>());
         this.saver = saver;
         this.loader = loader;
         this.informerHuman = new ReportablePrize();
@@ -109,12 +108,12 @@ public class ServicePrizeDraw {
     //Выполняем чтение содержимого дерева
     public boolean loadFrom(String path) {
         try {
-            prizeDraw = (PrizeDraw)loader.loadFrom(path);
-        }
-        catch(IOException e) {
-            return false;
+            prizeDraw = (PrizeDraw<Prize>)loader.loadFrom(path);
         }
         catch(ClassNotFoundException e) {
+            return false;
+        }
+        catch(IOException e) {
             return false;
         }
         return true;
