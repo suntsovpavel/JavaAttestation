@@ -112,8 +112,12 @@ public class ConsoleUI implements View{
                 return false;
             }
         }
-        presenter.addPrize(name, amount, weight);
-        System.out.println("Игрушка успешно добавлена в список разыгрываемых");
+        if(presenter.addPrize(name, amount, weight)){
+            System.out.println("Игрушка успешно добавлена в список разыгрываемых:");
+            ShowListPrizes();
+        }else {
+            System.out.println("Игрушка не добавлена: заданы некорректные параметры");
+        }
         return true;
     }
 

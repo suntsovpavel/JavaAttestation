@@ -29,12 +29,16 @@ public class ServicePrizeDraw {
     }
 
     //добавляем игрушку в список разыгрываемых:
-    public void addItem(String name, int amount, int weight){
+    public boolean addItem(String name, int amount, int weight){
         //Получаем максимальный id по текущему списку и увеличиваем на единицу:
         int id = prizeDraw.getMaxId() + 1;
 
         //!!! Объекты можем создавать только здесь, не в PrizeDraw !!!
-        prizeDraw.addItem(new Prize(id, name, amount, weight, informerHuman));
+        Prize prize = new Prize(id, name, amount, weight, informerHuman);
+        if (!prize.getFlag()) //в Prize заданы некорректные исходные данные
+            return false;
+        prizeDraw.addItem(prize);
+        return true;
     }
 
     //возвращаем информацию о игрушках в списке разыгрываемых:

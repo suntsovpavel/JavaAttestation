@@ -19,8 +19,9 @@ public class Presenter {
         service = new ServicePrizeDraw(saver, loader);
     }
 
-    public void addPrize(String name, int amount, int weight) {
-        service.addItem(name, amount, weight);
+    public boolean addPrize(String name, int amount, int weight)
+    {
+        return service.addItem(name, amount, weight);
     }
 
     //возвращаем информацию о игрушках в списке разыгрываемых:

@@ -50,6 +50,8 @@ public class Prize implements Serializable, ItemPrizeDraw {
         return true;
     }
 
+    public boolean getFlag(){ return flag; }
+
     public String getInfo(){
         return reportable.getInfo(this);
     }
